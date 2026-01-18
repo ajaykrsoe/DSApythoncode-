@@ -1,0 +1,18 @@
+def permutation(path,n,visited,resource):
+    if(len(path)<n):
+          for key in visited:
+              if not visited[key] :
+                  visited[key] = True
+                  permutation(path+key,n,visited,resource)
+                  visited[key] =False
+
+
+
+    else:
+        print(path,end=" ")
+
+resource   ="ABC"
+visited={key:False for key in resource}
+permutation("",len(resource),visited,resource)
+
+
