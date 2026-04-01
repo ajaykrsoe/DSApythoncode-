@@ -1,0 +1,104 @@
+#User function Template for python3
+class Node:
+    def __init__(self, f, c, order):
+        self.f = f
+        self.c = c
+        self.order = order
+        self.left = None
+        self.right = None
+
+
+def smaller(a, b):
+    if a.f != b.f:
+        return a.f < b.f
+    return a.order < b.order
+
+
+def heapifyTopDown(arr, i, n):
+    while True:
+        left = 2 * i + 1
+        right = left + 1
+        m = i
+
+        if left < n and smaller(arr[left], arr[m]):
+            m = left
+        if right < n and smaller(arr[right], arr[m]):
+            m = right
+
+        if m == i:
+            break
+
+        arr[i], arr[m] = arr[m], arr[i]
+        i = m
+
+
+def heapifyBottomUp(arr, i):
+    while i > 0:
+        parent = (i - 1) // 2
+        if smaller(arr[i], arr[parent]):
+            arr[i], arr[parent] = arr[parent], arr[i]
+            i = parent
+        else:
+            break
+
+
+def heapify(arr):
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapifyTopDown(arr, i, n)
+
+
+def heappush(arr, node):
+    arr.append(node)
+    heapifyBottomUp(arr, len(arr) - 1)
+
+
+def heappop(arr):
+    if not arr:
+        return None
+
+    if len(arr) == 1:
+        return arr.pop()
+
+    minimum = arr[0]
+    arr[0] = arr.pop()
+    heapifyTopDown(arr, 0, len(arr))
+    return minimum
+
+
+class Solution:
+    def buildTree(self, S, F, N):
+        heap = [Node(F[i], S[i], i) for i in range(N)]
+        heapify(heap)
+
+        next_order = N
+
+        while len(heap) > 1:
+            x = heappop(heap)
+            y = heappop(heap)
+
+            root = Node(x.f + y.f, "$", next_order)
+            next_order += 1
+
+            root.left = x
+            root.right = y
+            heappush(heap, root)
+
+        return heappop(heap)
+
+    def preorderTraversal(self, root, current_code, ans):
+        if root is None:
+            return
+
+        if root.left is None and root.right is None:
+            ans.append(current_code if current_code != "" else "0")
+            return
+
+        self.preorderTraversal(root.left, current_code + "0", ans)
+        self.preorderTraversal(root.right, current_code + "1", ans)
+
+    def huffmanCodes(self, S, f, N):
+        root = self.buildTree(S, f, N)
+        ans = []
+        self.preorderTraversal(root, "", ans)
+        return ans
