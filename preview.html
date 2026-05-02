@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <!------------------------------ <script src="https://kit.webawesome.com/9472a03b81b14916.js" crossorigin="anonymous"></script>-------------------->
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+  background: #080808;
+  color: #fff;
+}
+#header {
+  width: 100%;
+  height: 100vh;
+  background-image: url(Images/shrishti\ photo\ perfext\ 11t.png);
+  background-size: cover;
+}
+.container {
+  padding: 10px 10%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 140px;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+}
+nav ul a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav ul li a:hover::after {
+  width: 100%;
+}
+.header-text {
+  margin-top: 20%;
+  font-size: 30px;
+}
+.header-text h1 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.header-text h1 span {
+  color: #ff004f;
+}
+
+/* ============about================== */
+#about {
+  padding: 80px 0;
+  color: #ababab;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.about-col-1 {
+  flex-basis: 35%;
+}
+.about-col-1 img {
+  width: 100%;
+}
+
+.about-col-2 {
+  flex-basis: 60%;
+}
+.sub-title {
+  font-size: 60px;
+  font-weight: 600;
+  color: #fff;
+}
+.tab-titles {
+  display: flex;
+  margin: 20px 0 40px;
+}
+.tab-links {
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+.tab-links::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  transition: 0.5s;
+}
+.tab-links.active-link::after {
+  width: 50%;
+}
+.tab-contents ul li {
+  list-style: none;
+  margin: 10px 0;
+}
+.tab-contents ul li span {
+  color: #b54769;
+  font-size: 14px;
+}
+.tab-contents {
+  display: none;
+}
+.tab-contents.active-tab {
+  display: block;
+}
+
+/* -----------------services----------------- */
+#services {
+  padding: 30px 0;
+}
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 40px;
+  margin-top: 50px;
+}
+.services-list div {
+  background: #262626;
+  padding: 40px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  border-radius: 10px;
+  transition: background 0.5s, transform 0.5s;
+  /* color: #ff004f; */
+}
+.services-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;;
+}
+.services-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.services-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.services-list div:hover{
+    background: #ff004f;
+    transform: translate(-10px);
+
+}
+/* -----------------------------portfolio----------------------- */
+#portfolio{
+  padding: 50px 0;
+}
+.work-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 40px;
+  margin-top: 50px;
+
+}
+.work{
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.work img{
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+
+}
+.layer{
+  width:100% ;
+  height: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  font-size: 14px;
+  transition: height 0.5s;
+ 
+}
+.layer h3{
+  font-weight: 500;
+  margin-bottom: 20px;
+
+}
+.layer a{
+  margin-top: 20px;
+  color: #ff004f;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 60px;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.work:hover img{
+  transform: scale(1.1);
+}
+
+.work:hover .layer{
+  height: 100%;
+}
+.btn{
+  display: block;
+  margin: 50px auto;
+  width: fit-content;
+  border: 1px solid #ff004f;
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.5s;
+}
+.btn:hover{
+  background: #ff004f;
+}
+
+/* -------------------------------Contact---------------------------- */
+.contact-left{
+  flex-basis: 35%;
+
+}
+.contact-right{
+  flex-basis: 60%;
+}
+.contact-left p{
+  margin-top: 30px;
+}
+.contact-left p i{
+  color: #ff004f;
+  margin-right: 15px;
+  font-size: 25px;
+}
+
+.social-icons{
+  margin-top: 30px;
+}
+.social-icons a{
+  text-decoration: none;
+  font-size: 30px;
+  margin-right: 15px;
+  color: #ababab;
+  display: inline-block;
+}
+.social-icons a:hover{
+  color: #ff004f;
+  transform: translateY(-5px);
+}
+.btn.btn2{
+  display: inline-block;
+  background: #ff004f;
+}
+.contact-right form{
+  width: 100%;
+}
+form input, form textarea{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: #262626;
+  padding: 15px;
+  margin: 15px 0;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px;
+}
+form .btn2{
+  padding: 14px 60px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+
+}
+.copyright{
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: #262626;
+  font-weight: 300;
+  margin-top: 20px;
+}
+.copyright i{
+  color: #ff004f;
+}
+/* -------------css------------------------ */
+
+nav .fa-solid{
+  display: none;
+}
+@media only screen and (max-width:600px){
+  #header{
+    background-image: url(Images/shrishti\ photo\ perfext\ mobile.png);
+  }
+  .header-text{
+    margin-top: 100%;
+    font-size: 16px;
+  }
+  .header-text h1{
+    font-size: 30px;
+  }
+  nav .fa-solid{
+  display: block;
+  font-size: 25px;
+  position: absolute;   /* 🔥 ye missing tha */
+  right: 30px;          /* right side */
+  top: 20px;            /* top se gap */
+  cursor: pointer;
+  z-index: 3;
+
+}
+nav ul{
+  background: #ff004f;
+  position: fixed;
+  top: 0;
+  right: -270px;
+  width: 270px;
+  height: 100vh;
+  padding-top: 50px;
+   z-index: 2; 
+  transition: right 0.5s;
+ 
+   
+
+}
+nav ul li{
+  display: block;
+  margin: 25px;
+}
+nav ul .fa-solid{
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  cursor: pointer;
+}
+.sub-title{
+  font-size: 35px;
+}
+.about-col-1,.about-col-2{
+  flex-basis: 100%;
+}
+.about-col-1{
+ margin-bottom: 30px;
+}
+.about-col-2{
+  font-size: 14px;
+}
+.tab-links{
+  font-size: 16px;
+  margin-right: 20px;
+}
+.contact-left,.contact-right{
+  flex-basis: 100%;
+}
+.copyright{
+  font-size: 12px;
+}
+
+
+}
+#msg{
+  color: #61b752;
+  margin-top: -40px;
+  display: block;
+}
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="Images/Copilot_20260426_225347.png" alt="Logo" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-times" onclick="closemenu()"></i>
+          </ul>
+          <!-- <i class="fa-solid fa-bars" onclick="openmenu()"></i> -->
+          <i class="fa-solid fa-bars" id="menuIcon" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+          <p>Web Designer & UI Designer</p>
+          <h1>
+            Hello, I’m <span>Shrishti Shrivastava</span><br />
+            A passionate Web & UI Designer<br />
+            I design clean, responsive, and user-focused digital experiences.
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="Images/prfile.png" />
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p>
+              I am a Passionate Computer Science undergraduate currently
+              pursuing my B.Tech from ITM University. I have a strong interest
+              in software development and problem-solving, with foundational
+              knowledge in Java and Data Structures & Algorithms. I am
+              continuously working on improving my coding skills through
+              platforms like LeetCode and HackerRank. I also have a keen
+              interest in UI/UX design and enjoy creating user-friendly digital
+              experiences. I am a quick learner, adaptable, and always eager to
+              explore new technologies. My goal is to build impactful projects
+              and grow into a skilled software engineer. I am currently
+              preparing for placement opportunities and focusing on
+              strengthening both my technical and communication skills.
+            </p>
+
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+              <p class="tab-links" onclick="opentab('experience')">Experiences</p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>UI/UX</span><br />Basic knowledge of wireframing and
+                  creating user-friendly interfaces
+                </li>
+                <li>
+                  <span>Web Development</span><br />HTML ,CSS and basic JavaScript
+                </li>
+                <li>
+                  <span>Programming</span><br />
+                  Java and Data Structures
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>Projects</span><br />1.Bank Management
+                  System(java)-Developed a basic banking system with features
+                  like account creation deposit withdrawl. <br />2.Portfolio
+                  Website-Designed and developed a personal portfolio using HTML
+                  and CSS.
+                </li>
+                <li>
+                  <span>Learning</span><br />Currently learning Data Structures
+                  and Algorithms in java <br />Improving problem-solving and
+                  coding skills
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <span>2024 - 2028</span><br />B.Tech in Computer Science - ITM
+                  University, Gwalior
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- services -->
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+
+            <h2>Web & Frontend Development</h2>
+            <p>
+              I build responsive and user-friendly websites using HTML, CSS, and
+              JavaScript. I focus on clean design, fast performance, and smooth
+              user experience across all devices.
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-crop"></i>
+
+            <h2>UI/UX & App Design</h2>
+            <p>
+              I design modern, intuitive user interfaces for websites and mobile
+              apps, ensuring a simple and engaging user experience
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+          <div>
+            <i class="fa-brands fa-java"></i>
+
+            <h2>Java Development & Problem Solving</h2>
+            <p>
+              I develop applications using Java and apply data structures and
+              algorithms to write efficient and optimized code.
+            </p>
+            <a href="#">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---------------------------------------- portfolio-------------------------------------- -->
+    <div id="portfolio">
+      <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+          <div class="work">
+            <img src="Images/work-2.png" />
+            <div class="layer">
+              <h3>Web Development</h3>
+              <p>
+                Crafting responsive, high-performance web experiences that turn
+                ideas into impactful digital solutions.
+              </p>
+              <a href="#"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="Images/work-3.pngj.png" />
+            <div class="layer">
+              <h3>Data Structure</h3>
+              <p>
+                Data Structures help you build efficient and powerful solutions
+                for real-world problems.
+              </p>
+              <a href="#"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="Images/work-1.png" />
+            <div class="layer">
+              <h3>Music App</h3>
+              <p>
+                Access millions of songs instantly with seamless playback and
+                smart recommendations.
+              </p>
+              <a href="#"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">See More</a>
+      </div>
+    </div>
+    <!-- COntact -->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+
+          <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i>shrivastavashrishti20@gmail.com</p>
+           <p><i class="fa-solid fa-square-phone"></i>9179945910</p>
+
+            <div class="social-icons">
+            <a href="https://www.linkedin.com/feed/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://web.whatsapp.com/"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <a href="Images/Shrishticorrect_resume.pdf.pdf" download class="btn btn2">Download CV</a>
+            </div>
+          <div class="contact-right">
+            <form name="YOUR_FORM_NAME" >
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="Email" placeholder="Your Email" required>
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg"></span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright ⓒ Shrishti. Made with <i class="fa-solid fa-heart"></i> by Easy Tutorials</p>
+      </div>
+    </div>
+
+
+
+
+    <script>
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");
+
+      function opentab(tabname) {
+        for (tablink of tablinks) {
+          tablink.classList.remove("active-link");
+        }
+        for (tabcontent of tabcontents) {
+          tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+    </script>
+
+    <!-- <script>
+
+      var sidemenu = document.getElementById("sidemenu");
+
+      function openmenu(){
+        sidemenu.style.right = "0px";
+         
+   }
+     function closemenu(){
+        sidemenu.style.right = "-270px";
+   }
+
+
+
+
+    </script> -->
+    <script>
+var sidemenu = document.getElementById("sidemenu");
+var menuIcon = document.getElementById("menuIcon");
+
+function openmenu(){
+  sidemenu.style.right = "0";
+  menuIcon.style.display = "none";  
+}
+
+function closemenu(){
+  sidemenu.style.right = "-270px";
+  menuIcon.style.display = "block"; 
+}
+</script>
+
+
+
+
+
+<script>
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbxe9zzlJ5rQCZaSPCVEqy4y_tuo5UyFkgCO4Q9ufVUL4SYBFUeyEZy33Q6avAC40Pb0/exec'
+	const form = document.forms['YOUR_FORM_NAME']
+  const msg=document.getElementById("msg")
+
+	form.addEventListener('submit', e => {
+		e.preventDefault()
+		fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+			.then(response => response.json())
+			.then(response => {
+        msg.innerHTML="Message sent successfully"
+        setTimeout(function(){
+          msg.innerHTML=""
+        },5000)
+        form.reset()
+      })
+			.catch(error => console.error('Error!', error.message))
+	})
+</script>
+
+
+
+
+  </body>
+</html>
